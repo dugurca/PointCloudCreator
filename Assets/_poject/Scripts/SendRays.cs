@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.AnimatedValues;
 
 public class SendRays : MonoBehaviour
 {
@@ -11,6 +10,8 @@ public class SendRays : MonoBehaviour
 
 	public static bool WriteToFile = false;
 	public static bool CreateSpheres = true;
+
+	public Transform Trees;
 
 	private Camera _rayCam;
 
@@ -45,5 +46,9 @@ public class SendRays : MonoBehaviour
 	void Start ()
 	{
 		Rays();
+	}
+
+	void Update()
+	{
 	}
 }
