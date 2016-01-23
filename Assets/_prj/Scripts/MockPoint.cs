@@ -11,9 +11,9 @@ public class MockPoint
 		scaleVec = new Vector3(scale, scale, scale);
 	}
 
-	public MockPoint(float s, Vector3 sv)
+	public MockPoint(Vector3 sv)
 	{
-		scale = s;
+		scale = sv.x;
 		scaleVec = sv;
 	}
 
@@ -25,10 +25,18 @@ public class MockPoint
 		return go;
 	}
 
-	public GameObject CreateSphereAtPos(Vector3 pos)
+	public GameObject CreateSphereAtPos(Vector3 pos, float noiseAmount = 0f)
 	{
 		var go = CreateSphere();
-		go.transform.position = pos;
+		Vector3 randPos = Vector3.zero;
+		if (noiseAmount > 0f)
+		{
+			randPos = Random.insideUnitSphere * noiseAmount;
+		}
+		go.transform.position = pos + randPos;
+
 		return go;
 	}
+
+
 }
