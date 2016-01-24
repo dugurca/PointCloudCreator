@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -8,15 +6,19 @@ using Random = UnityEngine.Random;
 
 public static class WritePoints
 {
-	public static void Write(List<Vector3> lst, string split = " ")
+	public static void Write(List<Vector3> lst, string split = " ", int maxEntires = -1)
 	{
-		string fileName = "pcObj_" + RandomString(25) + ".txt";
+		string fileName = "pointClouds/pcObj_" + RandomString(25) + ".txt";
+		int numEntries = 0;
 		using (StreamWriter file = new StreamWriter(fileName))
 		{
 			foreach (Vector3 v3 in lst)
 			{
-				string str = v3.x + " " + v3.y + " " + v3.z;
+				var str = v3.x + " " + v3.y + " " + v3.z;
 				file.WriteLine(str);
+				numEntries++;
+				if (maxEntires > 0 && numEntries >= maxEntires)
+					break;
 			}
 		}
 	}

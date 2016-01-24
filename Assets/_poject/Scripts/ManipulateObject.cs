@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 public static class ManipulateObject
 {
 	public static void Manipulate(this Transform tr, float scaleMin, float scaleMax)
